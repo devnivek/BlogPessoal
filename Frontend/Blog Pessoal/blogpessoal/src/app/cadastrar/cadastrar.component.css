@@ -6,16 +6,8 @@
     background-size: cover;
 }
 
-.celeste{
-    background-color: #1fa4bc;
-    color: white;
+@media screen and (max-width: 766px){
+    .hide{
+        display: none;
+    }
 }
-
-a {
-    color: yellow;
-}
-
-.radio-green [type="radio"]:checked+label:after {
-    border-color: #00C851;
-    background-color: #00C851;
-  }

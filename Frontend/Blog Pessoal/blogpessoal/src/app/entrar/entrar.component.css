@@ -14,3 +14,10 @@
 a {
     color: yellow;
 }
+
+@media screen and (max-width: 766px){
+    .hide{
+        display: none;
+    }
+}
+
