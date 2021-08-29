@@ -1,0 +1,13 @@
+#img-bg{
+    background-image: url('../../assets/img/capa2.jpg');
+    min-height: 753px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+@media screen and (max-width: 766px){
+    .hide{
+        display: none;
+    }
+}

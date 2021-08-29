@@ -1,0 +1,23 @@
+#img-bg{
+    background-image: url('../../assets/img/capa.jpg');
+    min-height: 753px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.celeste{
+    background-color: #1fa4bc;
+    color: white;
+}
+
+a {
+    color: yellow;
+}
+
+@media screen and (max-width: 766px){
+    .hide{
+        display: none;
+    }
+}
+
