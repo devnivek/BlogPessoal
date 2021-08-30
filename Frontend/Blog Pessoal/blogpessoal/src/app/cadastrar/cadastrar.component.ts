@@ -31,6 +31,17 @@ export class CadastrarComponent implements OnInit {
   cadastrar() {
     this.user.tipo = this.tipoUsuario
 
+    if(this.user.tipo != 'adm' && this.user.tipo != 'normal'){
+      alert('Selecione um tipo de usuário!')
+    }
+
+    if(this.user.usuario.indexOf('@') == -1 || this.user.usuario.indexOf('.') == -1){
+      alert('O usuário deve ser um email válido!')
+    }
+
+    if(this.user.senha.length < 7){
+      alert('A senha precisa ser de no mínimo 8 caracteres!')
+    }
     if(this.user.senha != this.confirmaSenha){
       alert('As senhas não coincidem! Por favor, digite novamente.')
     } 
