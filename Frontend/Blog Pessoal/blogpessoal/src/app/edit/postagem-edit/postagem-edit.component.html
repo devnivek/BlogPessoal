@@ -1,0 +1,40 @@
+<div class="container">
+
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <h1 class="text-center text-info">Atualizar Postagem</h1>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-6">
+
+            <div class="form-group">
+                <label for="titulo">Título</label>
+                <input [(ngModel)]='postagem.titulo' type="text" class="form-control" id="titulo" placeholder="Digite um título">
+            </div>
+            <div class="form-group">
+                <label for="texto">Texto</label>
+                <textarea [(ngModel)]='postagem.texto' class="form-control" name="texto" id="texto" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imagem">Link da Foto</label>
+                <input [(ngModel)]='postagem.imagem' type="text" class="form-control" id="imagem" placeholder="Insira o link da imagem aqui">
+            </div>
+
+            <div class="form-group">
+                <label for="tema">Escolha um tema</label>
+                <select class="form-control" name="tema" id="tema" [(ngModel)]='idTema' (change)='findByIdTema()'>
+                    <option value="" *ngFor='let item of listaTemas' value="{{item.id}}">{{item.descricao}}</option>
+                </select>
+            </div>
+
+            <div class="d-flex justify-content-center mb-5">
+                <button class="btn btn-danger mr-4" routerLink='/inicio'><i class="fa fa-times" aria-hidden="true"></i> Cancelar</button>
+                <button class="btn btn-success" (click)='atualizar()'><i class="fa fa-check" aria-hidden="true"></i> Atualizar</button>
+            </div>
+
+        </div>
+    </div>
+
+</div>

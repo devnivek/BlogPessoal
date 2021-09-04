@@ -33,7 +33,8 @@
 
             <a class="nav-item nav-link active text-info font-weight-bold" id="nav-allPosts-tab" data-toggle="tab" href="#allPosts" role="tab" aria-controls="nav-allPosts" aria-selected="true">Todas as Postagens</a>
 
-            <a (click)='findByIdUser()' class="nav-item nav-link text-info font-weight-bold" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">Minhas Postagens</a>
+            <!-- (click)='findByIdUser()' -->
+            <a class="nav-item nav-link text-info font-weight-bold" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">Minhas Postagens</a>
 
             <a class="nav-item nav-link text-info font-weight-bold" id="nav-postTheme-tab" data-toggle="tab" href="#postTheme" role="tab" aria-controls="nav-postTheme" aria-selected="false">Postagens por tema</a>
 
@@ -60,7 +61,8 @@
             <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">
                 
                 <div class="card-columns">
-                    <div class="card" *ngFor='let item of user.postagem'>
+                    <div *ngFor='let item of listaPostagens'>
+                    <div class="card" *ngIf='(item.usuario.id == idUser)'>
                         <img class="card-img-top" height="250px" src="{{item.imagem}}" alt="Imagem de capa do card">
                         <div class="card-body">
                             <h5 class="card-title mb-1">{{item.titulo}}</h5>
@@ -69,19 +71,25 @@
                         </div>
                         <div class="card-footer">
                             <small class="text-muted">Postado em {{item.data | date: 'dd/MM/yyy'}} às {{item.data | date: 'HH:mm'}}</small>
+                            <br>
+                            <div class="text-center">
+                            <button [routerLink]="['/postagem-edit', item.id]" class="btn btn-primary mt-3 mr-3"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button>
+                            <button [routerLink]="['/postagem-delete', item.id]" class="btn btn-danger mt-3"><i class="fa fa-trash-o" aria-hidden="true"></i> Apagar</button>
+                            </div>
                         </div>
+                    </div>
                     </div>
                 </div>
                 
             </div>
 
             <div class="tab-pane fade" id="postTheme" role="tabpanel" aria-labelledby="nav-postTheme-tab">
-                
-                <div class="card-columns" *ngFor='let tema of listaTemas'>
-                    <div class="card" *ngFor='let item of tema.postagem'>
+                <div class="card-columns"> <!-- *ngFor='let tema of listaTemas' -->
+                    <div class="card" *ngFor='let item of listaPostagens'>
                         <img class="card-img-top" width="100vh" src="{{item.imagem}}" alt="Imagem de capa do card">
                         <div class="card-body">
-                            <h5 class="card-title mb-1">{{item.titulo}}</h5><hr>
+                            <h5 class="card-title mb-1">{{item.titulo}}</h5>
+                            <small class="text-muted">Tema: {{item.tema.descricao}}</small><hr>
                             <p class="card-text">{{item.texto}}</p>
                         </div>
                         <div class="card-footer">
@@ -89,7 +97,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             
         </div>
