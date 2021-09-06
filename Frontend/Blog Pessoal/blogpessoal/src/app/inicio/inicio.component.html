@@ -34,7 +34,7 @@
             <a class="nav-item nav-link active text-info font-weight-bold" id="nav-allPosts-tab" data-toggle="tab" href="#allPosts" role="tab" aria-controls="nav-allPosts" aria-selected="true">Todas as Postagens</a>
 
             <!-- (click)='findByIdUser()' -->
-            <a class="nav-item nav-link text-info font-weight-bold" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">Minhas Postagens</a>
+            <a (click)='findByIdUser()' class="nav-item nav-link text-info font-weight-bold" id="nav-myPosts-tab" data-toggle="tab" href="#myPosts" role="tab" aria-controls="nav-myPosts" aria-selected="false">Minhas Postagens</a>
 
             <a class="nav-item nav-link text-info font-weight-bold" id="nav-postTheme-tab" data-toggle="tab" href="#postTheme" role="tab" aria-controls="nav-postTheme" aria-selected="false">Postagens por tema</a>
 
@@ -61,9 +61,8 @@
             <div class="tab-pane fade" id="myPosts" role="tabpanel" aria-labelledby="nav-myPosts-tab">
                 
                 <div class="card-columns">
-                    <div *ngFor='let item of listaPostagens'>
-                    <div class="card" *ngIf='(item.usuario.id == idUser)'>
-                        <img class="card-img-top" height="250px" src="{{item.imagem}}" alt="Imagem de capa do card">
+                    <div class="card" *ngFor='let item of user.postagem'>
+                        <img class="card-img-top" width="100vh" src="{{item.imagem}}" alt="Imagem de capa do card">
                         <div class="card-body">
                             <h5 class="card-title mb-1">{{item.titulo}}</h5>
                             <small class="text-muted">Tema: {{item.tema.descricao}}</small><hr>
@@ -78,7 +77,7 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                    
                 </div>
                 
             </div>
